@@ -1,9 +1,13 @@
 import Image from 'next/image';
+import AddTidalGates from './components/AddTidalGates/AddTidalGates';
 
 export default function Home() {
   return (
-    <main>
-      <h1>Tidal Gates</h1>
-    </main>
+    <>
+      <AddTidalGates />
+      <main>
+        <h3>Main</h3>
+      </main>
+    </>
   );
 }
