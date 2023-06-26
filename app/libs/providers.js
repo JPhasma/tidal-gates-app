@@ -1,10 +1,14 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
-import { DataProvider } from './contexts/dataContext';
+import DataProvider from './contexts/dataContext';
 
-const Providers = ({ children }) => {
-  return <ThemeProvider attribute='class'>{children}</ThemeProvider>;
+export const Providers = ({ children }) => {
+  return (
+    <ThemeProvider attribute='class'>
+      <DataProvider>{children}</DataProvider>
+    </ThemeProvider>
+  );
 };
 
 export default Providers;

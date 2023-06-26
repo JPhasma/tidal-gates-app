@@ -13,5 +13,5 @@ export default function DataProvider({ children }) {
   // const [data, setData] = useState(initialData);
   const data = initialData;
 
-  return <DataContext.Provider value='data'>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 }
