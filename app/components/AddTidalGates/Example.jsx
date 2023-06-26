@@ -4,13 +4,18 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../libs/contexts/dataContext';
 
 function Example() {
-  const val = useContext(DataContext);
+  const { data, setData } = useContext(DataContext);
   return (
     <div>
       <h3>Example:</h3>
-      {val.map((el) => {
-        return <h5 key={el.id}>{el.name}</h5>;
-      })}
+      <ul>
+        {data.map((el) => {
+          return <li key={el.id}>{el.name}</li>;
+        })}
+      </ul>
+      <button onClick={() => setData([...data, { id: 4, name: 'spain' }])}>
+        Add
+      </button>
     </div>
   );
 }
