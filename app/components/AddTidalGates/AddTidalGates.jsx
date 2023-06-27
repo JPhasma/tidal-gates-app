@@ -13,16 +13,21 @@ function AddTidalGates() {
   const [gateCloses, setGateCloses] = useState(initialGateVal);
   const [comments, setComments] = useState('');
 
+  const [gatesId, setGatesId] = useState(0);
+
   const handleAddGate = (e) => {
     e.preventDefault();
+
     const newGate = {
       station,
       gateName,
       gateOpens,
       gateCloses,
       comments,
+      id: gatesId,
     };
     setGates([...gates, newGate]);
+    setGatesId(gatesId + 1);
     console.log('Add a tidal gate', newGate);
     handleResetForm();
   };
@@ -76,7 +81,6 @@ function AddTidalGates() {
           <label>Gate Opens: </label>
 
           <select
-            value={gateOpens}
             defaultValue={initialGateVal}
             onChange={(e) => handleSelectGateOpens(e.target.value)}
           >
@@ -94,7 +98,6 @@ function AddTidalGates() {
         <div>
           <label>Gate Closes: </label>
           <select
-            value={gateCloses}
             defaultValue={initialGateVal}
             onChange={(e) => handleSelectGateCloses(e.target.value)}
           >
