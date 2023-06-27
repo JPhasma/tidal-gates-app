@@ -81,7 +81,7 @@ function AddTidalGates() {
           <label>Gate Opens: </label>
 
           <select
-            defaultValue={initialGateVal}
+            value={gateOpens}
             onChange={(e) => handleSelectGateOpens(e.target.value)}
           >
             <option value='High Water'>High Water</option>
@@ -98,7 +98,7 @@ function AddTidalGates() {
         <div>
           <label>Gate Closes: </label>
           <select
-            defaultValue={initialGateVal}
+            value={gateCloses}
             onChange={(e) => handleSelectGateCloses(e.target.value)}
           >
             <option value='High Water'>High Water</option>
