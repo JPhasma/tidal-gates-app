@@ -6,7 +6,8 @@ import { DataContext } from '../../libs/contexts/dataContext';
 
 function AddTidalGates() {
   const initialGateVal = 'High Water';
-  const { gates, setGates, tidalStation } = useContext(DataContext);
+  const { gates, setGates, tidalStation, setGateStation } =
+    useContext(DataContext);
   const [station, setStation] = useState('Dover');
   const [gateName, setGateName] = useState('');
   const [gateOpens, setGateOpens] = useState(initialGateVal);
@@ -26,6 +27,7 @@ function AddTidalGates() {
       comments,
       id: gatesId,
     };
+    setGateStation('0014');
     setGates([...gates, newGate]);
     setGatesId(gatesId + 1);
     console.log('Add a tidal gate', newGate);
