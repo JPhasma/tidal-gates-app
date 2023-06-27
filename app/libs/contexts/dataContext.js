@@ -27,7 +27,7 @@ export default function DataProvider({ children }) {
     async function fetchData() {
       try {
         const res = await fetch(url, {
-          mode: 'no-cors',
+          mode: 'cors',
           headers: {
             'Ocp-Apim-Subscription-Key': key,
             'User-Agent': 'My-App',
