@@ -5,11 +5,12 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from '../../libs/contexts/dataContext';
 
 function AddTidalGates() {
+  const initialGateVal = 'High Water';
   const { gates, setGates, tidalStation } = useContext(DataContext);
   const [station, setStation] = useState('Dover');
   const [gateName, setGateName] = useState('');
-  const [gateOpens, setGateOpens] = useState('High Water');
-  const [gateCloses, setGateCloses] = useState('High Water');
+  const [gateOpens, setGateOpens] = useState(initialGateVal);
+  const [gateCloses, setGateCloses] = useState(initialGateVal);
   const [comments, setComments] = useState('');
 
   const handleAddGate = (e) => {
@@ -23,12 +24,15 @@ function AddTidalGates() {
     };
     setGates([...gates, newGate]);
     console.log('Add a tidal gate', newGate);
+    handleResetForm();
+  };
 
+  const handleResetForm = () => {
     // clear form states
     setStation('Dover');
     setGateName('');
-    setGateOpens('');
-    setGateCloses('');
+    setGateOpens(initialGateVal);
+    setGateCloses(initialGateVal);
     setComments('');
   };
 
@@ -71,7 +75,11 @@ function AddTidalGates() {
         <div>
           <label>Gate Opens: </label>
 
-          <select onChange={(e) => handleSelectGateOpens(e.target.value)}>
+          <select
+            value={gateOpens}
+            defaultValue={initialGateVal}
+            onChange={(e) => handleSelectGateOpens(e.target.value)}
+          >
             <option value='High Water'>High Water</option>
             <option value='-1'>-1</option>
             <option value='-2'>-2</option>
@@ -85,7 +93,11 @@ function AddTidalGates() {
         </div>
         <div>
           <label>Gate Closes: </label>
-          <select onChange={(e) => handleSelectGateCloses(e.target.value)}>
+          <select
+            value={gateCloses}
+            defaultValue={initialGateVal}
+            onChange={(e) => handleSelectGateCloses(e.target.value)}
+          >
             <option value='High Water'>High Water</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -103,7 +115,11 @@ function AddTidalGates() {
             onChange={(e) => setComments(e.target.value)}
           ></input>
         </div>
-        <button>Add Gate</button>
+
+        <button type='submit'>Add Gate</button>
+        <button type='button' onClick={handleResetForm}>
+          Reset
+        </button>
       </form>
     </section>
   );
