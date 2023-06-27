@@ -13,4 +13,24 @@ main {
     margin-bottom: 1rem;
     padding: 1rem;
   }
+
+  .hour {
+    border: 1px solid red;
+    width: calc((100% - 22px) / 13);
+    padding: 4px;
+    margin: 2px;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:hover {
+      background: red;
+      color: white;
+    }
+  }
+
+  .hours_container {
+    border: 1px solid gold;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
