@@ -4,10 +4,8 @@ import React, { useContext, useState } from 'react';
 
 import { DataContext } from '../../libs/contexts/dataContext';
 
-import Example from './Example';
-
 function AddTidalGates() {
-  const { gates, setGates } = useContext(DataContext);
+  const { gates, setGates, tidalStation } = useContext(DataContext);
   const [station, setStation] = useState('Dover');
   const [gateName, setGateName] = useState('');
   const [gateOpens, setGateOpens] = useState('');
@@ -25,12 +23,23 @@ function AddTidalGates() {
     };
     setGates([...gates, newGate]);
     console.log('Add a tidal gate', newGate);
+
     // clear form states
     setStation('Dover');
     setGateName('');
     setGateOpens('');
     setGateCloses('');
+    setComments('');
   };
+
+  const handleSelectGateOpens = (openHour) => {
+    setGateOpens(openHour);
+  };
+
+  const handleSelectGateCloses = (closeHour) => {
+    setGateCloses(closeHour);
+  };
+
   return (
     <section>
       <h3>AddTidalGates</h3>
@@ -38,8 +47,17 @@ function AddTidalGates() {
         <div>
           <label>Station: </label>
           <select value={station} onChange={(e) => setStation(e.target.value)}>
-            <option value='Dover'>Dover (tidal atlas default)</option>
-            <option value='Caernarfon'>Caernarfon</option>
+            <option value='0089-Dover'>Dover</option>
+            {tidalStation.map((tidal) => {
+              return (
+                <option
+                  key={tidal.properties.Id}
+                  value={`${tidal.properties.Id}-${tidal.properties.Name}`}
+                >
+                  {tidal.properties.Name}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>
@@ -52,19 +70,30 @@ function AddTidalGates() {
         </div>
         <div>
           <label>Gate Opens: </label>
-          <input
-            type='text'
-            value={gateOpens}
-            onChange={(e) => setGateOpens(e.target.value)}
-          ></input>
+
+          <select onChange={(e) => handleSelectGateOpens(e.target.value)}>
+            <option value='0'>High Water</option>
+            <option value='-1'>-1</option>
+            <option value='-2'>-2</option>
+            <option value='-3'>-3</option>
+            <option value='-4'>-4</option>
+            <option value='-5'>-5</option>
+            <option value='-6'>-6</option>
+          </select>
+
+          {/* <HourOption handleSelect={handleSelectGateOpens} /> */}
         </div>
         <div>
           <label>Gate Closes: </label>
-          <input
-            type='text'
-            value={gateCloses}
-            onChange={(e) => setGateCloses(e.target.value)}
-          ></input>
+          <select onChange={(e) => handleSelectGateCloses(e.target.value)}>
+            <option value='0'>High Water</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+          </select>
         </div>
         <div>
           <label>Comments: </label>
@@ -76,6 +105,9 @@ function AddTidalGates() {
         </div>
         <button>Add Gate</button>
       </form>
+      <div>
+        <h3>tidal</h3>
+      </div>
     </section>
   );
 }

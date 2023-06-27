@@ -1,14 +1,9 @@
 'use client';
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import jsonTidal from './stations.json';
 
 export const DataContext = createContext({});
-
-const initialData = [
-  { id: 1, name: 'jane' },
-  { id: 2, name: 'rane' },
-  { id: 3, name: 'plane' },
-];
 
 const initialGates = [
   {
@@ -30,12 +25,50 @@ const initialGates = [
   },
 ];
 
+const url =
+  'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0089/TidalEvents?duration=3';
+
+const key = process.env.API_KEY;
+
+async function getData() {
+  const res = await fetch(url, {
+    mode: 'cors',
+    headers: {
+      'Ocp-Apim-Subscription-Key': key,
+      'User-Agent': 'My-App',
+      Accept: '*/*',
+    },
+  });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  console.log('RES: ', res.json());
+  return res.json();
+}
+
 export default function DataProvider({ children }) {
-  const [data, setData] = useState(initialData);
   const [gates, setGates] = useState(initialGates);
+  const [tidalStation, setTidalStation] = useState(jsonTidal);
+  const [gateStation, setGateStation] = useState('0089');
+
+  useEffect(() => {
+    getData().then((data) => {
+      console.log('DATA: ', data);
+    });
+  }, [gateStation]);
 
   return (
-    <DataContext.Provider value={{ data, setData, gates, setGates }}>
+    <DataContext.Provider
+      value={{
+        gates,
+        setGates,
+        tidalStation,
+        setTidalStation,
+        gateStation,
+        setGateStation,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
