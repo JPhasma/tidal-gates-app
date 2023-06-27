@@ -8,8 +8,8 @@ function AddTidalGates() {
   const { gates, setGates, tidalStation } = useContext(DataContext);
   const [station, setStation] = useState('Dover');
   const [gateName, setGateName] = useState('');
-  const [gateOpens, setGateOpens] = useState('');
-  const [gateCloses, setGateCloses] = useState('');
+  const [gateOpens, setGateOpens] = useState('High Water');
+  const [gateCloses, setGateCloses] = useState('High Water');
   const [comments, setComments] = useState('');
 
   const handleAddGate = (e) => {
@@ -72,7 +72,7 @@ function AddTidalGates() {
           <label>Gate Opens: </label>
 
           <select onChange={(e) => handleSelectGateOpens(e.target.value)}>
-            <option value='0'>High Water</option>
+            <option value='High Water'>High Water</option>
             <option value='-1'>-1</option>
             <option value='-2'>-2</option>
             <option value='-3'>-3</option>
@@ -86,7 +86,7 @@ function AddTidalGates() {
         <div>
           <label>Gate Closes: </label>
           <select onChange={(e) => handleSelectGateCloses(e.target.value)}>
-            <option value='0'>High Water</option>
+            <option value='High Water'>High Water</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
