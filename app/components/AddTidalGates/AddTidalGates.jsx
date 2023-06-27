@@ -41,8 +41,8 @@ function AddTidalGates() {
   };
 
   return (
-    <section>
-      <h3>AddTidalGates</h3>
+    <section id='add_tidal_gates'>
+      <h3>Add Tidal Gate</h3>
       <form onSubmit={handleAddGate}>
         <div>
           <label>Station: </label>
@@ -105,9 +105,6 @@ function AddTidalGates() {
         </div>
         <button>Add Gate</button>
       </form>
-      <div>
-        <h3>tidal</h3>
-      </div>
     </section>
   );
 }

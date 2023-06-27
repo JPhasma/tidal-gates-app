@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <AddTidalGates />
       <main>
-        <h3>Main</h3>
+        <h1>Gates</h1>
         <GatesList />
       </main>
     </>

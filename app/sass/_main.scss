@@ -1,0 +1,16 @@
+main {
+  border: 1px solid green;
+  padding: 1rem;
+
+  #gates_list {
+    ul {
+      list-style: none;
+    }
+  }
+
+  .gate_container {
+    border: 1px solid aqua;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+}

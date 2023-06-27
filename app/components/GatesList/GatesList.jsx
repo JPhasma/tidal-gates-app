@@ -6,16 +6,16 @@ import { DataContext } from '../../libs/contexts/dataContext';
 function GatesList() {
   const { gates } = useContext(DataContext);
   return (
-    <div>
+    <div id='gates_list'>
       <ul>
         {gates.map((el) => {
           return (
             <li key={el.id}>
-              <div>
+              <div className='gate_container'>
                 <h3>{el.gateName}</h3>
-                <p>{el.station}</p>
+                <p>Based on selected Tidal Station: {el.station}</p>
                 <p>
-                  gateOpens: {el.gateOpens}, gateCloses: {el.gateCloses}
+                  Gate Opens: {el.gateOpens}, Gate Closes: {el.gateCloses}
                 </p>
                 <p>Comments: {el.comments}</p>
               </div>
