@@ -1,4 +1,12 @@
 #add_tidal_gates {
   border: 1px solid deeppink;
   padding: 1rem;
+
+  label {
+    width: 100px;
+    display: inline-block;
+  }
+  button {
+    margin-left: 100px;
+  }
 }
