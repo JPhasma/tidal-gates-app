@@ -20,8 +20,9 @@ function GatesList() {
           return (
             <li key={el.id}>
               <div className='gate_container'>
-                <h3>{el.gateName}</h3>
-                <p>Based on selected Tidal Station: {el.station}</p>
+                <h2>{el.gateName}</h2>
+                <p>Based on selected Tidal Station:</p>
+                <h4>{el.station}</h4>
                 <p>
                   Gate Opens:
                   {el.gateOpens === 'High Water'
@@ -34,8 +35,7 @@ function GatesList() {
                     ? el.gateCloses
                     : ` ${el.gateCloses} hours after High Water`}
                 </p>
-                <p>Comments: {el.comments}</p>
-
+                {el.comments && <p>Comments: {el.comments}</p>}
                 <ul>
                   {el.tides.map((tide) => {
                     if (tide.EventType === 'HighWater') {
