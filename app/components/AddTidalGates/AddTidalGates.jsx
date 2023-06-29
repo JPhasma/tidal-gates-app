@@ -16,22 +16,36 @@ function AddTidalGates() {
 
   const [gatesId, setGatesId] = useState(0);
 
-  const handleAddGate = (e) => {
+  const handleAddGate = async (e) => {
     e.preventDefault();
 
-    const newGate = {
-      station,
-      gateName,
-      gateOpens,
-      gateCloses,
-      comments,
-      id: gatesId,
-    };
-    setGateStation('0014');
-    setGates([...gates, newGate]);
-    setGatesId(gatesId + 1);
-    console.log('Add a tidal gate', newGate);
-    handleResetForm();
+    // fetch url using Next13 new API handlers
+    // helps to bypass CORS issue
+    const url = '/api/admiralty';
+
+    try {
+      // fetch data via api handler
+      console.log('LETS GET DATA');
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log('YES', data);
+
+      const newGate = {
+        station,
+        gateName,
+        gateOpens,
+        gateCloses,
+        comments,
+        id: gatesId,
+      };
+      setGateStation('0014');
+      setGates([...gates, newGate]);
+      setGatesId(gatesId + 1);
+      console.log('Add a tidal gate', newGate);
+      handleResetForm();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleResetForm = () => {
@@ -94,8 +108,6 @@ function AddTidalGates() {
             <option value='-5'>-5</option>
             <option value='-6'>-6</option>
           </select>
-
-          {/* <HourOption handleSelect={handleSelectGateOpens} /> */}
         </div>
         <div>
           <label>Gate Closes: </label>

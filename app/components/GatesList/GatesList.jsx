@@ -3,6 +3,7 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../../libs/contexts/dataContext';
 import Hours from './Hours';
+
 function GatesList() {
   const { gates } = useContext(DataContext);
   return (
