@@ -1,5 +1,10 @@
-export async function GET(request, id) {
+export async function GET(request) {
   console.log('API STARTING - sever side');
+  console.log('REQUEST', request);
+
+  const url = new URL(request.url);
+  const id = url.searchParams.get('id');
+  console.log('ID', id);
 
   const options = {
     headers: {
@@ -10,12 +15,11 @@ export async function GET(request, id) {
   };
 
   // fetch url
-  const url =
-    'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0081/TidalEvents?duration=1';
+  const apiUrl = `https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${id}/TidalEvents?duration=1`;
 
   // fetch data
   console.log('FETCHING DATA');
-  const response = await fetch(url, options);
+  const response = await fetch(apiUrl, options);
   const data = await response.json();
   console.log('DATA', data);
 

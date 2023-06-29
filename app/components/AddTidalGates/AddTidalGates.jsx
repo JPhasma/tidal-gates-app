@@ -21,19 +21,20 @@ function AddTidalGates() {
 
     // fetch url using Next13 new API handlers
     // helps to bypass CORS issue
-    const admiraltyID = '0081';
+    const stationParts = station.split('-');
+    const stationNumber = stationParts[0].substring(0, 4);
+    const stationName = stationParts[1];
+    const admiraltyID = stationNumber || '0089';
     const url = `/api/admiralty?id=${admiraltyID}`;
 
     try {
       // fetch data via api handler
-      console.log('LETS GET DATA');
       const response = await fetch(url);
       const data = await response.json();
-      console.log('YES', data);
       const tides = data;
 
       const newGate = {
-        station,
+        station: stationName,
         gateName,
         gateOpens,
         gateCloses,
@@ -41,7 +42,7 @@ function AddTidalGates() {
         id: gatesId,
         tides,
       };
-      setGateStation('0014');
+
       setGates([...gates, newGate]);
       setGatesId(gatesId + 1);
       console.log('Add a tidal gate', newGate);
