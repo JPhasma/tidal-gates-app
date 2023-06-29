@@ -6,7 +6,6 @@ import Hours from './Hours';
 
 const processDateTime = (dt) => {
   const [date, time] = dt.split('T');
-  // format date
   const [year, month, day] = date.split('-');
   const newDate = `${day} / ${month} / ${year}`;
 

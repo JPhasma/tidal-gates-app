@@ -28,6 +28,11 @@ main {
     font-weight: bold;
   }
 
+  .high_water {
+    background-color: darkblue !important;
+    color: #fff;
+  }
+
   .hours_container {
     display: flex;
     flex-wrap: wrap;

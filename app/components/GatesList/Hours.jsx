@@ -64,6 +64,7 @@ function Hours(props) {
   // get the hours for open and close time as integers
   const openHour = parseInt(openTime.split(':')[0]);
   const closeHour = parseInt(closeTime.split(':')[0]);
+  const highWaterHour = parseInt(timeWithoutSeconds.split(':')[0]);
 
   return (
     <div>
@@ -80,13 +81,23 @@ function Hours(props) {
             (closeHour < openHour && i <= closeHour)
           ) {
             return (
-              <div className='hour highlight' key={i}>
+              <div
+                className={
+                  i === highWaterHour
+                    ? 'hour highlight high_water'
+                    : 'hour highlight'
+                }
+                key={i}
+              >
                 {hour}
               </div>
             );
           } else {
             return (
-              <div className='hour' key={i}>
+              <div
+                className={i === highWaterHour ? 'hour high_water' : 'hour'}
+                key={i}
+              >
                 {hour}
               </div>
             );
