@@ -1,4 +1,4 @@
-export async function GET(request) {
+export async function GET(request, id) {
   console.log('API STARTING - sever side');
 
   const options = {
@@ -11,7 +11,7 @@ export async function GET(request) {
 
   // fetch url
   const url =
-    'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0081/TidalEvents?duration=6';
+    'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0081/TidalEvents?duration=3';
 
   // fetch data
   console.log('FETCHING DATA');

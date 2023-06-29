@@ -6,6 +6,7 @@ import Hours from './Hours';
 
 function GatesList() {
   const { gates } = useContext(DataContext);
+  console.log(gates);
   return (
     <div id='gates_list'>
       <ul>
@@ -21,6 +22,17 @@ function GatesList() {
                 <p>Comments: {el.comments}</p>
                 <Hours />
               </div>
+              <ul>
+                {el.tides.map((tide) => {
+                  return (
+                    <li key={tide.DateTime}>
+                      <p>
+                        {tide.EventType}: DateTime: {tide.DateTime}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
           );
         })}
