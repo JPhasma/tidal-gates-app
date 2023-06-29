@@ -9,6 +9,7 @@ function GatesList() {
   console.log(gates);
   return (
     <div id='gates_list'>
+      {gates.length !== 0 && <h1>Gates</h1>}
       <ul>
         {gates.map((el) => {
           return (
