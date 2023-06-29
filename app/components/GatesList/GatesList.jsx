@@ -6,9 +6,11 @@ import Hours from './Hours';
 
 const processDateTime = (dt) => {
   const [date, time] = dt.split('T');
-  console.log('processTime', time);
-  console.log('processDate', date);
-  return { date, time };
+  // format date
+  const [year, month, day] = date.split('-');
+  const newDate = `${day} / ${month} / ${year}`;
+
+  return { newDate, time };
 };
 
 function GatesList() {
@@ -32,7 +34,7 @@ function GatesList() {
                     : ` ${el.gateOpens} hours before High Water`}
                 </p>
                 <p>
-                  Gate Closes:{' '}
+                  Gate Closes:
                   {el.gateCloses === 'High Water'
                     ? el.gateCloses
                     : ` ${el.gateCloses} hours after High Water`}
@@ -41,10 +43,10 @@ function GatesList() {
                 <ul>
                   {el.tides.map((tide) => {
                     if (tide.EventType === 'HighWater') {
-                      const { date, time } = processDateTime(tide.DateTime);
+                      const { newDate, time } = processDateTime(tide.DateTime);
                       return (
                         <li key={tide.DateTime} className='hoursUI'>
-                          <h3>{date}</h3>
+                          <h3>{newDate}</h3>
                           <p>High Water: {time.slice(0, -3)}</p>
                           <Hours
                             time={time}
