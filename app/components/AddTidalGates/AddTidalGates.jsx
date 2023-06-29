@@ -90,7 +90,7 @@ function AddTidalGates() {
           Gate Close: select <em>3</em> hours after High Water
         </li>
         <li>
-          Comments: <em>ONLY attempt the cross the Bar at this time</em>
+          Comments: <em>ONLY attempt to cross the Bar between these times</em>
         </li>
       </ul>
       <br />

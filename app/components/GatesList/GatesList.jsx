@@ -23,7 +23,16 @@ function GatesList() {
                 <h3>{el.gateName}</h3>
                 <p>Based on selected Tidal Station: {el.station}</p>
                 <p>
-                  Gate Opens: {el.gateOpens}, Gate Closes: {el.gateCloses}
+                  Gate Opens:
+                  {el.gateOpens === 'High Water'
+                    ? el.gateOpens
+                    : ` ${el.gateOpens} hours before High Water`}
+                </p>
+                <p>
+                  Gate Closes:{' '}
+                  {el.gateCloses === 'High Water'
+                    ? el.gateCloses
+                    : ` ${el.gateCloses} hours after High Water`}
                 </p>
                 <p>Comments: {el.comments}</p>
 
