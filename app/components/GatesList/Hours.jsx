@@ -11,6 +11,7 @@ const hours = [
   '07',
   '08',
   '09',
+  '10',
   '11',
   '12',
   '13',
@@ -24,7 +25,6 @@ const hours = [
   '21',
   '22',
   '23',
-  '24',
 ];
 
 function Hours(props) {
@@ -61,22 +61,40 @@ function Hours(props) {
   // calculate the closing time
   const closeTime = calcTime(timeWithoutSeconds, close);
 
+  // get the hours for open and close time as integers
+  const openHour = parseInt(openTime.split(':')[0]);
+  const closeHour = parseInt(closeTime.split(':')[0]);
+
   return (
     <div>
       {/* <span className='day_container'>Day:</span>
        */}
-      <h4>Tidal gates for 24 hours ahead are: </h4>
+      <h4>
+        Tidal gates for 24 hours ahead are: {openHour} - {closeHour}{' '}
+      </h4>
       <div className='hours_container'>
         {hours.map((hour, i) => {
-          return (
-            <div className='hour' key={i}>
-              {hour}
-            </div>
-          );
+          if (
+            (i >= openHour && i <= closeHour) ||
+            (closeHour < openHour && i >= openHour) ||
+            (closeHour < openHour && i <= closeHour)
+          ) {
+            return (
+              <div className='hour highlight' key={i}>
+                {hour}
+              </div>
+            );
+          } else {
+            return (
+              <div className='hour' key={i}>
+                {hour}
+              </div>
+            );
+          }
         })}
       </div>
       <p>
-        {timeWithoutSeconds}-HighWater Tidal gate is between: {openTime} and{' '}
+        {timeWithoutSeconds} - HighWater Tidal gate is between: {openTime} and{' '}
         {closeTime}
       </p>
     </div>

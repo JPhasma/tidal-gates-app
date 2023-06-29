@@ -45,7 +45,7 @@ function GatesList() {
                       return (
                         <li key={tide.DateTime} className='hoursUI'>
                           <h3>{date}</h3>
-                          <p>High Water: {time}</p>
+                          <p>High Water: {time.slice(0, -3)}</p>
                           <Hours
                             time={time}
                             open={el.gateOpens}
