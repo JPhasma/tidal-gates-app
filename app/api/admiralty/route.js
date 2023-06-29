@@ -1,10 +1,8 @@
 export async function GET(request) {
   console.log('API STARTING - sever side');
-  console.log('REQUEST', request);
 
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
-  console.log('ID', id);
 
   const options = {
     headers: {

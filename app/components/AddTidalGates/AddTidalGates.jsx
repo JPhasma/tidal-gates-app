@@ -160,7 +160,7 @@ function AddTidalGates() {
         </div>
 
         <button type='submit'>Add Gate</button>
-        <button type='button' onClick={handleResetForm}>
+        <button type='button' onClick={handleResetForm} id='reset'>
           Reset
         </button>
       </form>
