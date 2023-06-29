@@ -13,7 +13,7 @@ export async function GET(request) {
   };
 
   // fetch url
-  const apiUrl = `https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${id}/TidalEvents?duration=1`;
+  const apiUrl = `https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${id}/TidalEvents?duration=2`;
 
   // fetch data
   console.log('FETCHING DATA');

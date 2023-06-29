@@ -4,8 +4,11 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../libs/contexts/dataContext';
 import Hours from './Hours';
 
-const processDateTime = () => {
-  console.log('processDateTime');
+const processDateTime = (dt) => {
+  const [date, time] = dt.split('T');
+  console.log('processTime', time);
+  console.log('processDate', date);
+  return { date, time };
 };
 
 function GatesList() {
@@ -16,7 +19,6 @@ function GatesList() {
       {gates.length !== 0 && <h1>Gates</h1>}
       <ul>
         {gates.map((el) => {
-          processDateTime();
           return (
             <li key={el.id}>
               <div className='gate_container'>
@@ -39,10 +41,16 @@ function GatesList() {
                 <ul>
                   {el.tides.map((tide) => {
                     if (tide.EventType === 'HighWater') {
+                      const { date, time } = processDateTime(tide.DateTime);
                       return (
                         <li key={tide.DateTime} className='hoursUI'>
-                          <p>High Water: DateTime: {tide.DateTime}</p>
-                          <Hours date='erm' highWater='yep' />
+                          <h3>{date}</h3>
+                          <p>High Water: {time}</p>
+                          <Hours
+                            time={time}
+                            open={el.gateOpens}
+                            close={el.gateCloses}
+                          />
                         </li>
                       );
                     }
