@@ -20,19 +20,20 @@ function GatesList() {
                   Gate Opens: {el.gateOpens}, Gate Closes: {el.gateCloses}
                 </p>
                 <p>Comments: {el.comments}</p>
-                <Hours />
+
+                <ul>
+                  {el.tides.map((tide) => {
+                    if (tide.EventType === 'HighWater') {
+                      return (
+                        <li key={tide.DateTime} className='hoursUI'>
+                          <p>High Water: DateTime: {tide.DateTime}</p>
+                          <Hours date='erm' highWater='yep' />
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
               </div>
-              <ul>
-                {el.tides.map((tide) => {
-                  return (
-                    <li key={tide.DateTime}>
-                      <p>
-                        {tide.EventType}: DateTime: {tide.DateTime}
-                      </p>
-                    </li>
-                  );
-                })}
-              </ul>
             </li>
           );
         })}

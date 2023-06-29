@@ -27,12 +27,13 @@ const hours = [
   '24',
 ];
 
-function Hours() {
+function Hours(props) {
+  const { date, highWater } = props; // TODO
   return (
     <div>
-      <span className='day_container'>Day:</span>
-      <p>Date: </p>
-      <p>High Water is at: </p>
+      {/* <span className='day_container'>Day:</span>
+      <p>Date: {date} </p>
+      <p>High Water is at: {highWater}</p> */}
       <h4>Tidal gates for 24 hours ahead are: </h4>
       <div className='hours_container'>
         {hours.map((hour, i) => {

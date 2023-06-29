@@ -11,7 +11,7 @@ export async function GET(request, id) {
 
   // fetch url
   const url =
-    'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0081/TidalEvents?duration=3';
+    'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0081/TidalEvents?duration=1';
 
   // fetch data
   console.log('FETCHING DATA');

@@ -71,6 +71,28 @@ function AddTidalGates() {
   return (
     <section id='add_tidal_gates'>
       <h3>Add Tidal Gate</h3>
+      <p>
+        NB: this is still a work in progress, but you can try this app by adding
+        some inputs eg:
+      </p>
+      <ul>
+        <li>
+          Station: select <em>Caernarfon</em>
+        </li>
+        <li>
+          Gate Name: type <em>Caernarfon Bar</em> as a name{' '}
+        </li>
+        <li>
+          Gate Opens: select <em>-3</em> hours before High Water
+        </li>
+        <li>
+          Gate Close: select <em>3</em> hours after High Water
+        </li>
+        <li>
+          Comments: <em>ONLY attempt the cross the Bar at this time</em>
+        </li>
+      </ul>
+      <br />
       <form onSubmit={handleAddGate}>
         <div>
           <label>Station: </label>
