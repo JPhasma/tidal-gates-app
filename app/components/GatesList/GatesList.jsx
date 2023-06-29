@@ -4,6 +4,10 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../libs/contexts/dataContext';
 import Hours from './Hours';
 
+const processDateTime = () => {
+  console.log('processDateTime');
+};
+
 function GatesList() {
   const { gates } = useContext(DataContext);
   console.log(gates);
@@ -12,6 +16,7 @@ function GatesList() {
       {gates.length !== 0 && <h1>Gates</h1>}
       <ul>
         {gates.map((el) => {
+          processDateTime();
           return (
             <li key={el.id}>
               <div className='gate_container'>

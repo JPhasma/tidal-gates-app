@@ -23,8 +23,8 @@ function AddTidalGates() {
     // helps to bypass CORS issue
     const stationParts = station.split('-');
     const stationNumber = stationParts[0].substring(0, 4);
-    const stationName = stationParts[1];
-    const admiraltyID = stationNumber || '0089';
+    const stationName = stationParts[1] ? stationParts[1] : 'Dover';
+    const admiraltyID = stationNumber !== 'Dove' ? stationNumber : '0089';
     const url = `/api/admiralty?id=${admiraltyID}`;
 
     try {
