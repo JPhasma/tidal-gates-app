@@ -99,6 +99,7 @@ function AddTidalGates() {
           <label>Station: </label>
           <select value={station} onChange={(e) => setStation(e.target.value)}>
             <option value='0089-Dover'>Dover</option>
+            <option value='0475-Caernarfon'>Caernarfon</option>
             {tidalStation.map((tidal) => {
               return (
                 <option

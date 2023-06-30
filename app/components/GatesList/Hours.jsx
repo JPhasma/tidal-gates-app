@@ -70,15 +70,13 @@ function Hours(props) {
     <div>
       {/* <span className='day_container'>Day:</span>
        */}
-      <h4>
-        Tidal gates for 24 hours ahead are: {openHour} - {closeHour}{' '}
-      </h4>
+      <h4>Tidal gates for 24 hours ahead are:</h4>
       <div className='hours_container'>
         {hours.map((hour, i) => {
           if (
             (i >= openHour && i <= closeHour) ||
-            (closeHour < openHour && i >= openHour) ||
-            (closeHour < openHour && i <= closeHour)
+            (closeHour < openHour && i >= openHour && openHour <= 12) ||
+            (closeHour < openHour && i <= closeHour && closeHour >= 12)
           ) {
             return (
               <div
