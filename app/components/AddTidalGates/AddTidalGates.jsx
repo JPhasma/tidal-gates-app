@@ -13,6 +13,7 @@ function AddTidalGates() {
   const [gateOpens, setGateOpens] = useState(initialGateVal);
   const [gateCloses, setGateCloses] = useState(initialGateVal);
   const [comments, setComments] = useState('');
+  const [days, setDays] = useState(1);
 
   const [gatesId, setGatesId] = useState(0);
 
@@ -25,7 +26,7 @@ function AddTidalGates() {
     const stationNumber = stationParts[0].substring(0, 4);
     const stationName = stationParts[1] ? stationParts[1] : 'Dover';
     const admiraltyID = stationNumber !== 'Dove' ? stationNumber : '0089';
-    const url = `/api/admiralty?id=${admiraltyID}`;
+    const url = `/api/admiralty?id=${admiraltyID}&days=${days}`;
 
     try {
       // fetch data via api handler
@@ -39,6 +40,7 @@ function AddTidalGates() {
         gateOpens,
         gateCloses,
         comments,
+        days,
         id: gatesId,
         tides,
       };
@@ -56,6 +58,7 @@ function AddTidalGates() {
     // clear form states
     setStation('Dover');
     setGateName('');
+    setDays(1);
     setGateOpens(initialGateVal);
     setGateCloses(initialGateVal);
     setComments('');
@@ -157,6 +160,14 @@ function AddTidalGates() {
             type='text'
             value={comments}
             onChange={(e) => setComments(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>Days Forecast</label>
+          <input
+            type='number'
+            value={days}
+            onChange={(e) => setDays(e.target.value)}
           ></input>
         </div>
 

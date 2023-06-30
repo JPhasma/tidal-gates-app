@@ -103,8 +103,9 @@ function Hours(props) {
         })}
       </div>
       <p>
-        {timeWithoutSeconds} - HighWater Tidal gate is between: {openTime} and{' '}
-        {closeTime}
+        <span className='blue'>{timeWithoutSeconds} - HighWater</span> Tidal
+        gate is between: <span className='bold'>{openTime}</span> and{' '}
+        <span className='bold'>{closeTime}</span>
       </p>
     </div>
   );

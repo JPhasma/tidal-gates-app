@@ -29,8 +29,17 @@ main {
   }
 
   .high_water {
-    background-color: darkblue !important;
+    background-color: blue !important;
     color: #fff;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .blue {
+    color: blue;
+    font-weight: bold;
   }
 
   .hours_container {

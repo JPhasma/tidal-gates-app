@@ -14,7 +14,7 @@ const processDateTime = (dt) => {
 
 function GatesList() {
   const { gates } = useContext(DataContext);
-  console.log(gates);
+  console.log('GATES', gates);
   return (
     <div id='gates_list'>
       {gates.length !== 0 && <h1>Gates</h1>}

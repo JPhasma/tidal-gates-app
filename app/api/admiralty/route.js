@@ -3,6 +3,8 @@ export async function GET(request) {
 
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
+  const days = url.searchParams.get('days');
+  console.log('DAYS', days);
 
   const options = {
     headers: {
@@ -13,7 +15,7 @@ export async function GET(request) {
   };
 
   // fetch url
-  const apiUrl = `https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${id}/TidalEvents?duration=2`;
+  const apiUrl = `https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${id}/TidalEvents?duration=${days}`;
 
   // fetch data
   console.log('FETCHING DATA');
